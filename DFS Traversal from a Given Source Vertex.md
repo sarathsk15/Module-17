@@ -11,7 +11,7 @@ To write a Python program to **print DFS traversal** from a given source vertex.
 
 **Step 3**: Add edges between vertices using the `addEdge()` method.
 
-**Step 4**: Implement the `DFSUtil()` function to **recursively visit** and print each unvisited vertex:
+**Step 4**: Implement the `DFSUtil()` function to **reCursively visit** and print each unvisited vertex:
 - Mark the current vertex as **visited**.
 - Recursively call `DFSUtil` for each **unvisited adjacent vertex**.
 
@@ -28,11 +28,37 @@ To write a Python program to **print DFS traversal** from a given source vertex.
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+#Reg.no: 212222063014
+#Name: SARATH KUMAR.K
+from collections import defaultdict
+class Graph:
+	def __init__(self):
+		self.graph = defaultdict(list)
+	def addEdge(self, u, v):
+		self.graph[u].append(v)
+	def DFSUtil(self, v, visited):
+		visited.add(v)
+		print(v, end=' ')
+		for neighbour in self.graph[v]:
+			if neighbour not in visited:
+				self.DFSUtil(neighbour, visited)
+	def DFS(self, v):
+		visited = set()
+		self.DFSUtil(v, visited)
+n=int(input())
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
+print("Following is DFS from (starting from vertex {})".format(n))
+g.DFS(n)
 ```
 
 ## OUTPUT
-```
-```
+<img width="777" height="170" alt="image" src="https://github.com/user-attachments/assets/ab74b91a-de10-405b-8e56-4382f3066f23" />
 
 ## RESULT
+Hence, The program is successfully executed and the Depth First Search (DFS) traversal from the given source vertex is verified.
